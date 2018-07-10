@@ -18,16 +18,16 @@
         android:text="请输入密码" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="登录" />
+        android:text="注册" />
 
     <Button
-        android:id="@+id/btn_go_register"
+        android:id="@+id/btn_go_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="没有账号"
+        android:text="去登录"
         android:textSize="10sp" />
 
 </LinearLayout>

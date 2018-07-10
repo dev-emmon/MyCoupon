@@ -1,6 +1,8 @@
 package imli.me.mycoupon.data;
 
-public class Coupon {
+import java.io.Serializable;
+
+public class Coupon implements Serializable {
 
     public int image;
 

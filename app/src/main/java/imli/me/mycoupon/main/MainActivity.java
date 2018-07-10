@@ -1,15 +1,18 @@
 package imli.me.mycoupon.main;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import imli.me.mycoupon.R;
+import imli.me.mycoupon.coupon.CouponActivity;
 import imli.me.mycoupon.data.Coupon;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
         rvList.setAdapter(adapter);
 
         adapter.addCoupons(createCoupons());
+        adapter.setOnItemClickListener(new CouponListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, Coupon coupon) {
+                Intent intent = new Intent(MainActivity.this, CouponActivity.class);
+                intent.putExtra("coupon", coupon);
+                startActivity(intent);
+            }
+        });
     }
 
 
