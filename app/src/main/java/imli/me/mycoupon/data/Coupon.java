@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class Coupon implements Serializable {
 
-    public int image;
+    public String cover;
 
     public String name;
 
-    public String remark;
+    public String description;
 
 }

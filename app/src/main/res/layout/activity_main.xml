@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".main.MainActivity">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp">
 
@@ -19,6 +19,7 @@
             android:src="@mipmap/bg_main" />
 
         <EditText
+            android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -26,8 +27,17 @@
             android:padding="8dp"
             android:text="收索" />
 
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_search"
+            android:layout_margin="8dp"
+            android:textColor="#fff"
+            android:textSize="14sp" />
 
-    </FrameLayout>
+
+    </RelativeLayout>
 
 
     <android.support.v7.widget.RecyclerView

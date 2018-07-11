@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import imli.me.mycoupon.R;
 import imli.me.mycoupon.data.Coupon;
 
@@ -25,9 +27,10 @@ public class CouponActivity extends AppCompatActivity {
         tvRemark = findViewById(R.id.tv_remark);
 
         Coupon coupon = (Coupon) getIntent().getSerializableExtra("coupon");
-        ivCover.setImageResource(coupon.image);
+//        ivCover.setImageResource(coupon.image);
+        Glide.with(this).load(coupon.cover).into(ivCover);
         tvName.setText(coupon.name);
-        tvRemark.setText(coupon.remark);
+        tvRemark.setText(coupon.description);
         setTitle(coupon.name);
 
     }
