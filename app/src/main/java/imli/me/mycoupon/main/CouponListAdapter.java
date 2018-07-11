@@ -41,6 +41,11 @@ public class CouponListAdapter extends RecyclerView.Adapter<CouponListAdapter.VH
         Glide.with(context).load(coupon.cover).into(holder.ivCover);
         holder.tvName.setText(coupon.name);
         holder.tvRemark.setText(coupon.description);
+
+        ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
+        lp.height = 10;
+        holder.itemView.setLayoutParams(lp);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
