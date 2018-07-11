@@ -19,7 +19,7 @@ imli.me.mycoupon
 * [sprint - 2](./code/day1.zip)
 
 ## 参考课程
-[参考课程](https://github.com/dev-emmon/Courseware)
+[参考课程：https://github.com/dev-emmon/Courseware](https://github.com/dev-emmon/Courseware)
 
 ## 移动应用开发常用图标
 [http://iconfont.cn/search/index](http://iconfont.cn/search/index)
