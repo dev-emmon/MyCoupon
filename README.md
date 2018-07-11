@@ -12,9 +12,9 @@ imli.me.mycoupon
 ```
 
 ## 视频
-[Day - 1](https://pan.baidu.com/s/1fwz5tEJegJrfnh9Ipd1wxg) 密码: ren6 
+[Day - 2](https://pan.baidu.com/s/1fwz5tEJegJrfnh9Ipd1wxg) 密码: ren6 
 
-## 代码
+## 每日代码
 * [sprint - 1](./code/day1.zip)
 * [sprint - 2](./code/day1.zip)
 
