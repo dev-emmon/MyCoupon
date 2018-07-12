@@ -12,6 +12,7 @@ Android Studio升级到3.1之后会遇到这样的相关错误：
 但是但是在打包的时候又出现这样的问题了，在app的build.gradle中添加以下配置：
 
 > aaptOptions.cruncherEnabled = false 
+
 > aaptOptions.useNewCruncher = false
 
 添加到如下的位置，编译之后，打包时是成功的。 
