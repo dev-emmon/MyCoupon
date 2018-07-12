@@ -1,18 +1,15 @@
-package imli.me.mycoupon.main;
+package imli.me.mycoupon.search;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,40 +20,34 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import imli.me.mycoupon.App;
 import imli.me.mycoupon.R;
 import imli.me.mycoupon.coupon.CouponActivity;
 import imli.me.mycoupon.data.Coupon;
 import imli.me.mycoupon.data.Resulte;
-import imli.me.mycoupon.search.SearchActivity;
+import imli.me.mycoupon.main.CouponListAdapter;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
 
-    private TextView tvName;
-    private EditText etSearch;
-    private Button btnSearch;
     private RecyclerView rvList;
     private CouponListAdapter adapter;
     private Handler handler;
     private SmartRefreshLayout refreshLayout;
     private int curPage = 1;
+    private String searchText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_search);
         App app = (App) getApplication();
-        tvName = findViewById(R.id.tv_name);
-        tvName.setText(app.getStudent().name);
+        searchText = getIntent().getStringExtra("searchText");
+        setTitle(searchText);
         refreshLayout = findViewById(R.id.sr_layout);
-        etSearch = findViewById(R.id.et_search);
-        btnSearch = findViewById(R.id.btn_search);
 
         handler = new Handler() {
             @Override
@@ -90,16 +81,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String searchText = etSearch.getText().toString();
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                intent.putExtra("searchText", searchText);
-                startActivity(intent);
-            }
-        });
-
 
         refersh();
 
@@ -117,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new CouponListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, Coupon coupon) {
-                Intent intent = new Intent(MainActivity.this, CouponActivity.class);
+                Intent intent = new Intent(SearchActivity.this, CouponActivity.class);
                 intent.putExtra("coupon", coupon);
                 startActivity(intent);
             }
@@ -142,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://39.106.207.131/api/product" + "?page=" + page)
+                            .url("http://39.106.207.131/api/product" + "?page=" + page + "&search=" + searchText)
                             .build();
                     Response response = client.newCall(request).execute();
                     String data = response.body().string();

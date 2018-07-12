@@ -42,10 +42,6 @@ public class CouponListAdapter extends RecyclerView.Adapter<CouponListAdapter.VH
         holder.tvName.setText(coupon.name);
         holder.tvRemark.setText(coupon.description);
 
-        ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
-        lp.height = 10;
-        holder.itemView.setLayoutParams(lp);
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +59,17 @@ public class CouponListAdapter extends RecyclerView.Adapter<CouponListAdapter.VH
 
     public Coupon getCoupon(int position) {
         return coupons.get(position);
+    }
+
+    public void refreshCoupons(List<Coupon> list) {
+        List<Coupon> newCoupons = new ArrayList<>();
+        for (Coupon c: list) {
+            if (!this.coupons.contains(c)) {
+                newCoupons.add(c);
+            }
+        }
+        this.coupons.addAll(0, newCoupons);
+        this.notifyDataSetChanged();
     }
 
     public void addCoupons(List<Coupon> list) {

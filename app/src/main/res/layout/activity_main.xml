@@ -18,14 +18,23 @@
             android:scaleType="centerCrop"
             android:src="@mipmap/bg_main" />
 
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="搜索" />
+
         <EditText
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:layout_toLeftOf="@id/btn_search"
             android:background="#44333f"
-            android:padding="8dp"
-            android:text="收索" />
+            android:hint="搜索"
+            android:padding="8dp" />
+
 
         <TextView
             android:id="@+id/tv_name"
@@ -40,10 +49,15 @@
     </RelativeLayout>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_list"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/sr_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>
